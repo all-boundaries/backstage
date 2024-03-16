@@ -94,3 +94,8 @@ catalog:
   locations:
     - type: github-discovery
       target: https://github.com/all-boundaries
+
+    # - type: file
+    #   target: ../../examples/org.yaml
+    # - type: file
+    #   target: ../../examples/entities.yaml
