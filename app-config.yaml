@@ -75,27 +75,15 @@ scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options
 
 catalog:
-  import:
-    entityFilename: catalog-info.yaml
-    pullRequestBranchName: backstage-integration
+  readonly: true
   rules:
-    - allow: [Component, System, API, Resource, Location]
+    - allow: [Component, API, System, Domain, Resource, Location, User, Group]
   locations:
-    # Local example data, file locations are relative to the backend process, typically `packages/backend`
+    # Local example of team organizing their own in one file
     - type: file
-      target: ../../examples/entities.yaml
-
-    # Local example template
-    - type: file
-      target: ../../examples/template/template.yaml
+      target: ../../examples/dupi-a.yaml
       rules:
-        - allow: [Template]
-
-    # Local example organizational data
-    - type: file
-      target: ../../examples/org.yaml
-      rules:
-        - allow: [User, Group]
+        - allow: [User, Group, System, Component, Library]
 
     ## Uncomment these lines to add more example data
     # - type: url
