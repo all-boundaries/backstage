@@ -1,5 +1,4 @@
 import { CatalogBuilder } from '@backstage/plugin-catalog-backend';
-import { ScaffolderEntitiesProcessor } from '@backstage/plugin-catalog-backend-module-scaffolder-entity-model';
 import { Router } from 'express';
 import { PluginEnvironment } from '../types';
 import {
@@ -16,7 +15,6 @@ export default async function createPlugin(
 ): Promise<Router> {
   const builder = await CatalogBuilder.create(env);
   const integrations = ScmIntegrations.fromConfig(env.config);
-  // builder.addProcessor(new ScaffolderEntitiesProcessor());
   const githubCredentialsProvider =
     DefaultGithubCredentialsProvider.fromIntegrations(integrations);
   builder.addProcessor(
