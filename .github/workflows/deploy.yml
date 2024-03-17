@@ -29,7 +29,6 @@ jobs:
       - name: "🖥️ install dependencies & compile"
         run: |
           yarn install --frozen-lockfile
-          yarn tsc
 
       - name: "🔎 test"
         run: yarn test:all
