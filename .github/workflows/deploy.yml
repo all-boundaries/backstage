@@ -16,10 +16,15 @@ jobs:
           cache: 'yarn'
           cache-dependency-path: 'yarn.lock'
 
-      - name: 🖥️ install & build
+      - name: "🖥️ install & build"
         run: |
           yarn install --frozen-lockfile
           yarn tsc
 
-      - name: 🔎 test
+      - name: "🔎 test"
         run: yarn test:all
+
+      - name: "⚙️ build docker image"
+        run: |
+          yarn build:backend --config ../../app-config.yaml
+          docker image build . -f packages/backend/Dockerfile --tag backstage
