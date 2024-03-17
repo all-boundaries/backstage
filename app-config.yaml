@@ -1,5 +1,5 @@
 app:
-  title: Scaffolded Backstage App
+  title: All Boundaries Backstage
   baseUrl: http://localhost:3000
 
 organization:
