@@ -16,11 +16,10 @@ jobs:
           cache: 'yarn'
           cache-dependency-path: 'yarn.lock'
 
-      - name: 🔎 test
-        run: yarn test:all
-
-      - name: 🖥️ build
+      - name: 🖥️ install & build
         run: |
           yarn install --frozen-lockfile
           yarn tsc
-          yarn build:backend --config ../../app-config.yaml
+
+      - name: 🔎 test
+        run: yarn test:all
