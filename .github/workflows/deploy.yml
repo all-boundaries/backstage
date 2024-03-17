@@ -27,4 +27,8 @@ jobs:
       - name: "⚙️ build docker image"
         run: |
           yarn build:backend --config ../../app-config.yaml
-          docker image build . -f packages/backend/Dockerfile --tag backstage
+          docker image build . -f packages/backend/Dockerfile --tag ${{ github.sha }}
+
+      - name: "🚀 push to registry"
+        run: |
+          docker push ghcr.io/all-boundaries/backstage:${{ github.sha }}
