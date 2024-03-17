@@ -1,11 +1,21 @@
 name: Build & Deploy Backstage
+
 on:
   push:
     branches:
       - main
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
 jobs:
   build-test-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
@@ -24,11 +34,31 @@ jobs:
       - name: "🔎 test"
         run: yarn test:all
 
-      - name: "⚙️ build docker image"
+      - name: "⚙️ build packages"
         run: |
+          yarn tsc
           yarn build:backend --config ../../app-config.yaml
-          docker image build . -f packages/backend/Dockerfile --tag ghcr.io/all-boundaries/backstage:${{ github.sha }}
 
-      - name: "🚀 push to registry"
-        run: |
-          docker push ghcr.io/all-boundaries/backstage:${{ github.sha }}
+      - name: "㊙ log in to the container registry"
+        uses: docker/login-action@3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: "🎣 extract metadata (tags, labels) for Docker"
+        id: meta
+        uses: docker/metadata-action@5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=sha
+
+      - name: "🚀 build and push Docker image"
+        uses: docker/build-push-action@5
+        with:
+          context: .
+          push: true
+          file: "packages/backend/Dockerfile"
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
