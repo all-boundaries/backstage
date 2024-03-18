@@ -46,22 +46,9 @@ techdocs:
     runIn: 'local'
 
 catalog:
-  providers:
-    github:
-      # the provider ID can be any camelCase string
-      providerId:
-        organization: 'all-boundaries' # string
-        catalogPath: 'catalog-info.yaml' # string
-        filters:
-          branch: 'main' # string
-          repository: '.*' # Regex
-        schedule: # same options as in TaskScheduleDefinition
-          # supports cron, ISO duration, "human duration" as used in code
-          frequency: { minutes: 45 }
-          # supports ISO duration, "human duration" as used in code
-          timeout: { minutes: 3 }
-  rules:
-    - allow: [Component, API, System, Domain, Resource, Location, User, Group]
+  # Overrides the default list locations from app-config.yaml as these contain example data.
+  # See https://backstage.io/docs/features/software-catalog/#adding-components-to-the-catalog for more details
+  # on how to get entities into the catalog.
   locations:
     - type: github-discovery
       target: https://github.com/all-boundaries
