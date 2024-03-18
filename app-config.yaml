@@ -75,25 +75,8 @@ scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options
 
 catalog:
-  providers:
-    github:
-      # the provider ID can be any camelCase string
-      providerId:
-        organization: 'all-boundaries' # string
-        catalogPath: 'catalog-info.yaml' # string
-        filters:
-          branch: 'main' # string
-          repository: '.*' # Regex
-        schedule: # same options as in TaskScheduleDefinition
-          # supports cron, ISO duration, "human duration" as used in code
-          frequency: { minutes: 45 }
-          # supports ISO duration, "human duration" as used in code
-          timeout: { minutes: 3 }
   rules:
     - allow: [Component, API, System, Domain, Resource, Location, User, Group]
-  locations:
-    - type: github-discovery
-      target: https://github.com/all-boundaries
 
     # - type: file
     #   target: ../../examples/org.yaml
