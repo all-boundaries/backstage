@@ -1,8 +1,6 @@
 import {
-  RadarEntry,
-  RadarEntrySnapshot,
   TechRadarApi,
-  TechRadarLoaderResponse,
+  TechRadarLoaderResponse
 } from '@backstage/plugin-tech-radar';
 import { radar } from './radar';
   
