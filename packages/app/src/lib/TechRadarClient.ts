@@ -4,7 +4,7 @@ import {
   } from '@backstage/plugin-tech-radar';
   
   export class TechRadarClient implements TechRadarApi {
-    async load(id: string | undefined): Promise<TechRadarLoaderResponse> {
+    async load(): Promise<TechRadarLoaderResponse> {
       // if needed id prop can be used to fetch the correct data
   
       const data = await fetch('https://github.com/all-boundaries/tech-radar/blob/main/radar.json').then(res => res.json());
