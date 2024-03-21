@@ -15,6 +15,6 @@ export const radar = {
     ],
     "entries": [
         { "key": "backstage", "id": "backstage", "title": "Backstage", "quadrant": "process", "description": "Backstage as a developer portal enables both discovery of existing capbilities and allow teams the autonomy to own the description and contents of their services.", "timeline": [{"moved": 0, "ringId": "adopt", "date": "2024-03-19", "description": ""}] },
-        { "key": "hugo", "id": "hugo", "title": "Hugo", "quadrant": "language", "description": "We have found that Hugo's markdown based syntax and flexible themeing to be easy and quick for standing up and maintaining a static site.", "timeline": [{"moved": 0, "ringId": "trial", "date": "2024-03-19", "description": ""}] }
+        { "key": "hugo", "id": "hugo", "title": "Hugo", "quadrant": "languages", "description": "We have found that Hugo's markdown based syntax and flexible themeing to be easy and quick for standing up and maintaining a static site.", "timeline": [{"moved": 0, "ringId": "trial", "date": "2024-03-19", "description": ""}] }
     ]
 }
