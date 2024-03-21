@@ -1,6 +1,5 @@
-import { TechRadarLoaderResponse } from "@backstage/plugin-tech-radar";
 
-export const radar: TechRadarLoaderResponse = {
+export const radar = {
     "title": "Tech Radar",
     "quadrants": [
         { "id": "infrastructure", "name": "Infrastructure" },

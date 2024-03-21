@@ -16,9 +16,9 @@ import { radar } from './radar';
       // For example, this converts the timeline dates into date objects
       return {
         ...data,
-        entries: data.entries.map((entry: RadarEntry) => ({
+        entries: data.entries.map((entry: any) => ({
           ...entry,
-          timeline: entry.timeline.map((timeline: RadarEntrySnapshot) => ({
+          timeline: entry.timeline.map((timeline: any) => ({
             ...timeline,
             date: new Date(timeline.date),
           })),
