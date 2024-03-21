@@ -1,7 +1,9 @@
 import {
-    TechRadarApi,
-    TechRadarLoaderResponse,
-  } from '@backstage/plugin-tech-radar';
+  RadarEntry,
+  RadarEntrySnapshot,
+  TechRadarApi,
+  TechRadarLoaderResponse,
+} from '@backstage/plugin-tech-radar';
   
   export class TechRadarClient implements TechRadarApi {
     async load(): Promise<TechRadarLoaderResponse> {
@@ -12,9 +14,9 @@ import {
       // For example, this converts the timeline dates into date objects
       return {
         ...data,
-        entries: data.entries.map(entry => ({
+        entries: data.entries.map((entry: RadarEntry) => ({
           ...entry,
-          timeline: entry.timeline.map(timeline => ({
+          timeline: entry.timeline.map((timeline: RadarEntrySnapshot) => ({
             ...timeline,
             date: new Date(timeline.date),
           })),
