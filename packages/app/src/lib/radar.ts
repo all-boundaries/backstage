@@ -17,12 +17,12 @@ const languages = [
       }
 ]
 
-const infrastructure = [
+const platforms = [
     {
         "key": "backstage",
         "id": "backstage",
         "title": "Backstage",
-        "quadrant": "infrastructure",
+        "quadrant": "platform",
         "description": "Backstage as a developer portal enables both discovery of existing capbilities and allow teams the autonomy to own the description and contents of their services.",
         "timeline": [
           {
@@ -39,8 +39,8 @@ export const radar = {
     "title": "Tech Radar",
     "quadrants": [
       {
-        "id": "infrastructure",
-        "name": "Infrastructure"
+        "id": "platform",
+        "name": "Platform"
       },
       {
         "id": "tools",
@@ -83,6 +83,6 @@ export const radar = {
     ],
     "entries": [
       ...languages,
-      ...infrastructure
+      ...platforms
     ]
   }
