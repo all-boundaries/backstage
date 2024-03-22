@@ -17,12 +17,12 @@ const languages = [
       }
 ]
 
-const processes = [
+const infrastructure = [
     {
         "key": "backstage",
         "id": "backstage",
         "title": "Backstage",
-        "quadrant": "process",
+        "quadrant": "infrastructure",
         "description": "Backstage as a developer portal enables both discovery of existing capbilities and allow teams the autonomy to own the description and contents of their services.",
         "timeline": [
           {
@@ -43,16 +43,16 @@ export const radar = {
         "name": "Infrastructure"
       },
       {
-        "id": "frameworks",
-        "name": "Frameworks"
+        "id": "tools",
+        "name": "Tools"
       },
       {
         "id": "languages",
-        "name": "Languages"
+        "name": "Languages & Frameworks"
       },
       {
-        "id": "process",
-        "name": "Process"
+        "id": "techniques",
+        "name": "Techniques"
       }
     ],
     "rings": [
@@ -83,6 +83,6 @@ export const radar = {
     ],
     "entries": [
       ...languages,
-      ...processes
+      ...infrastructure
     ]
   }
