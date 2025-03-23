@@ -39,14 +39,3 @@ spec:
     message ExampleMessage {
       string example = 1;
     };
----
-# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-component
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: example-api
-spec:
-  type: service
-  lifecycle: experimental
-  owner: default/team-a
-  system: examples

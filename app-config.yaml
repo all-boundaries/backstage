@@ -91,6 +91,14 @@ catalog:
         schedule:
           frequency: { minutes: 30 }
           timeout: { minutes: 3 }
+    githubOrg:
+      id: github
+      githubUrl: https://github.com
+      orgs: ['all-boundaries']
+      schedule:
+        frequency: { hours: 1 }
+        timeout: { minutes: 50 }
+
   locations:
     # Local example data, file locations are relative to the backend process, typically `packages/backend`
     - type: file
@@ -101,12 +109,6 @@ catalog:
       target: ../../examples/template/template.yaml
       rules:
         - allow: [Template]
-
-    # Local example organizational data
-    - type: file
-      target: ../../examples/org.yaml
-      rules:
-        - allow: [User, Group]
 
 kubernetes:
   # see https://backstage.io/docs/features/kubernetes/configuration for kubernetes configuration options
