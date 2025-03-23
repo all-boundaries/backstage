@@ -15,7 +15,7 @@ metadata:
 spec:
   type: website
   lifecycle: experimental
-  owner: development/guests
+  owner: default/guests
   system: examples
   providesApis: [example-grpc-api]
 ---
@@ -27,7 +27,7 @@ metadata:
 spec:
   type: grpc
   lifecycle: experimental
-  owner: development/guests
+  owner: default/guests
   system: examples
   definition: |
     syntax = "proto3";
@@ -48,5 +48,5 @@ metadata:
 spec:
   type: service
   lifecycle: experimental
-  owner: development/team-a
+  owner: default/team-a
   system: examples
