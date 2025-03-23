@@ -37,6 +37,9 @@ import { AppRouter, FlatRoutes } from '@backstage/core-app-api';
 import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
+import LightIcon from '@material-ui/icons/WbSunny';
+import { UnifiedThemeProvider} from '@backstage/theme';
+import { appTheme } from './theme/appTheme.ts';
 
 const app = createApp({
   apis,
@@ -71,6 +74,15 @@ const app = createApp({
       />
     ),
   },
+  themes: [{
+    id: 'my-theme',
+    title: 'My Custom Theme',
+    variant: 'light',
+    icon: <LightIcon />,
+    Provider: ({ children }) => (
+      <UnifiedThemeProvider theme={appTheme} children={children} />
+    ),
+  }]
 });
 
 const routes = (
