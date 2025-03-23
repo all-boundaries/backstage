@@ -47,13 +47,8 @@ auth:
 integrations:
   github:
     - host: github.com
-      # This is a Personal Access Token or PAT from GitHub. You can find out how to generate this token, and more information
-      # about setting up the GitHub integration here: https://backstage.io/docs/integrations/github/locations#configuration
-      token: ${GITHUB_TOKEN}
-    ### Example for how to add your GitHub Enterprise instance using the API:
-    # - host: ghe.example.net
-    #   apiBaseUrl: https://ghe.example.net/api/v3
-    #   token: ${GHE_TOKEN}
+      apps:
+        - $include: app-credentials.yaml
 
 proxy:
   ### Example for how to add a proxy endpoint for the frontend.
@@ -80,11 +75,22 @@ scaffolder:
 
 catalog:
   readonly: true
-  import:
-    entityFilename: catalog-info.yaml
-    pullRequestBranchName: backstage-integration
+  useUrlReadersSearch: true
+  orphanStrategy: delete
+  orphanProviderStrategy: delete
   rules:
     - allow: [Component, System, API, Resource, Location]
+  providers:
+    github:
+      allboundaries:
+        organization: 'all-boundaries'
+        catalogPath: '/catalog-info.yaml'
+        filters:
+          branch: 'main' # string
+          repository: '.*' # Regex
+        schedule:
+          frequency: { minutes: 30 }
+          timeout: { minutes: 3 }
   locations:
     # Local example data, file locations are relative to the backend process, typically `packages/backend`
     - type: file
@@ -101,19 +107,6 @@ catalog:
       target: ../../examples/org.yaml
       rules:
         - allow: [User, Group]
-
-    ## Uncomment these lines to add more example data
-    # - type: url
-    #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all.yaml
-
-    ## Uncomment these lines to add an example org
-    # - type: url
-    #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/acme-corp.yaml
-    #   rules:
-    #     - allow: [User, Group]
-  # Experimental: Always use the search method in UrlReaderProcessor.
-  # New adopters are encouraged to enable it as this behavior will be the default in a future release.
-  useUrlReadersSearch: true
 
 kubernetes:
   # see https://backstage.io/docs/features/kubernetes/configuration for kubernetes configuration options
